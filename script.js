@@ -142,16 +142,17 @@ function resetLibrary () {
         }
     }
 
-    this.parentNode.remove();
+    const myNode = document.getElementById("bookGrid");
+    while (myNode.firstChild) {
+      myNode.removeChild(myNode.lastChild);
+    }
+  
+    console.log(myLibrary);
+    myLibrary.splice(index, 1);
+    console.log(myLibrary);
+   myLibrary.forEach(book => createBookCard(book)); 
 
-    myLibrary  = myLibrary.splice(index, 1);
-
-   for (i=0; i < myLibrary.length; i++) {
-        createBookCard(book); 
-    } 
-}
-
-
+    }
 
 
 const bookSpace = document.querySelector('.bookSpace');
