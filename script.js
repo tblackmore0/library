@@ -65,15 +65,57 @@ class Book {
 
         let book = new Book(title, author, pages, read)
     	myLibrary.push(book);
+        createBookCard(book);
       
     }
 
 // Book construction end
 
 
+// Create book div
+
+function createBookCard(book) {
+    const bookGrid = document.getElementById("bookGrid")
+    const bookCard = document.createElement("div");
+    const title = document.createElement("h3");
+    const author = document.createElement("h3");
+    const pages = document.createElement("h3");
+    const readButton = document.createElement("button");
+    const removeButton = document.createElement("button");
+  
+    bookCard.classList.add("bookCard");
+    title.classList.add("bookText");
+    author.classList.add("bookText");
+    pages.classList.add("bookText");
+    readButton.classList.add("button");
+    readButton.classList.add("readButton");
+    removeButton.classList.add("button");
+    removeButton.classList.add("buttonRed");
+    removeButton.classList.add("removeButton");
+  
+    title.textContent = book.title;
+    author.textContent = book.author;
+    pages.textContent = `${book.pages} pages`;
+    removeButton.textContent = "Remove";
+    readButton.style.width = "120px";
+    if (book.read == "yes") {
+      readButton.textContent = "Read";
+    } else {
+      readButton.textContent = "Not read";
+    }
+  
+    bookCard.appendChild(title);
+    bookCard.appendChild(author);
+    bookCard.appendChild(pages);
+    bookCard.appendChild(readButton);
+    bookCard.appendChild(removeButton);
+    bookGrid.appendChild(bookCard);
+  }
+// Create book div end
+
 /* function displayBooks () {
     for (i=0, i < myLibrary.length, i++) {
-
+        createBookCard(book);
     }
 }
 */

@@ -10,17 +10,41 @@ body {
 }
 
 .bookSpace {
-    background-color: cadetblue;
-    width: 100%;
-    height: 500px;
-    display: grid;
+
 }
 
-    .cell {
-        background-color: crimson;
-        width: 10%;
-        height: 10%;
-    }
+  .bookGrid {
+      background-color: cadetblue;
+      width: 100%;
+      height: 500px;
+      display: grid;
+  }
+
+      .bookCard {
+          background-color: crimson;
+          width: 10%;
+          height: 10%;
+      }
+
+      .bookText{
+
+      }
+
+      .button {
+
+      }
+
+        .readButton {
+
+        }
+
+        .removeButton {
+
+        }
+
+        .buttonRed {
+          
+        }
 
 .openModal {
     font-weight: bold;
