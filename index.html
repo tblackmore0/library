@@ -3,7 +3,6 @@
     <meta charset="utf-8">
     <title>Rock Paper Scissors</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="/script.js"></script>
     <link href="/style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
   </head>
@@ -12,13 +11,41 @@
 
 <body>
     <div class="banner">
-        <button class="bookButton" type="button">New Book</button>
-        <div id="inputForm" class="modal">
-            <div class ="modalDialog">
 
-            </div>
-        </div>
-    </div>
+        <button id="modal_open" type="button">New Book</button>
+       
+       
+    <div id="modal_wrapper">        
+        <div id="modal_window">
+        
+            <div style="text-align: right;"><a id="modal_close" href="#">close <b>X</b></a></div>
+            
+            <p>Complete the form below to add a new book:</p>
+            
+            <form id="modal_feedback" method="" action="" accept-charset="UTF-8">
+                
+                <p><label>Title<strong>*</strong><br>
+                <input type="text" autofocus required size="48" id="title" name="title" value=""></label></p>
+
+                <p><label>Author<strong>*</strong><br>
+                <input type="text" required  size="48" id="author" name="author" value=""></label></p>
+
+                <p><label>Number of Pages<br>
+                <input type="text" pattern="[0-9]" oninvalid="setCustomValidity('Please enter a number.')"
+                onchange="try{setCustomValidity('')}catch(e){}" size="48" id="pages" name="pages" value=""></label></p>
+                
+                <label for="yesRead">Already read</label>
+                <input type="radio" id="yesRead" name="readStatus" value="1"><br>
+                <label for="notRead">Not yet read</label>
+                <input type="radio" id="notRead" name="readStatus" value="0"><br>
+
+                
+                <p><input type="button" id="submitForm" name="feedbackForm" value="Submit" onclick="formSubmit()"></p>
+            
+            </form>
+            
+        </div> 
+    </div> 
 
     <div class="bookSpace">
         <div class="bookGrid">
@@ -26,6 +53,9 @@
         </div>
 
     </div>
+
+
+    <script src="/script.js"></script>
 
 </body>
 

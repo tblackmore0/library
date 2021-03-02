@@ -21,3 +21,32 @@ body {
         width: 10%;
         height: 10%;
     }
+
+.openModal {
+    font-weight: bold;
+    background-color: coral;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+}
+
+#modal_window {
+  display: none;
+  z-index: 200;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 360px;
+  overflow: auto;
+  padding: 10px 20px;
+  background: #fff;
+  border: 5px solid #999;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+#modal_wrapper.overlay #modal_window {
+  display: block;
+}
