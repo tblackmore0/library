@@ -44,11 +44,12 @@ document.addEventListener("DOMContentLoaded", function() {
 // Book construction
 
 class Book {
-    constructor(title, author, pages, read) {
+    constructor(title, author, pages, read, identity) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.identity = identity;
 }}
 
  function formSubmit (){
@@ -62,14 +63,18 @@ class Book {
             } else if (read[1].checked) {
                 read = "no";
             };
+        let identity = (myLibrary.length);
 
-        let book = new Book(title, author, pages, read)
+        let book = new Book(title, author, pages, read, identity);
+
     	myLibrary.push(book);
         createBookCard(book);
+
       
     }
 
 // Book construction end
+
 
 
 // Create book div
@@ -103,31 +108,51 @@ function createBookCard(book) {
     } else {
       readButton.textContent = "Not read";
     }
-  
+    
+    bookCard.dataset.identity = book.identity;
+
     bookCard.appendChild(title);
     bookCard.appendChild(author);
     bookCard.appendChild(pages);
     bookCard.appendChild(readButton);
     bookCard.appendChild(removeButton);
     bookGrid.appendChild(bookCard);
+
+    let buttonListener = document.getElementsByClassName("removeButton");
+    for (let i = 0 ; i < buttonListener.length; i++) {
+        buttonListener[i].addEventListener('click' , resetLibrary, false) ; 
+     }
   }
 // Create book div end
 
-/* function displayBooks () {
-    for (i=0, i < myLibrary.length, i++) {
-        createBookCard(book);
+
+
+function resetLibrary () {
+    
+    let id = this.parentNode.dataset.identity
+   
+
+    let index = myLibrary.findIndex(checkArray);
+
+    function checkArray(element) {
+        for (i=0; i < myLibrary.length; i++) {
+            if (element.identity == id) {
+                return id;
+            }
+        }
     }
+
+    this.parentNode.remove();
+
+    myLibrary  = myLibrary.splice(index, 1);
+
+   for (i=0; i < myLibrary.length; i++) {
+        createBookCard(book); 
+    } 
 }
-*/
+
+
+
 
 const bookSpace = document.querySelector('.bookSpace');
 
-function createCell () {
-    const cell = document.createElement('div')
-    bookSpace.appendChild(cell).className =('cell')
-}
-
-  
- 
-
- 

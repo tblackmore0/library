@@ -10,13 +10,12 @@ body {
 }
 
 .bookSpace {
-
+  background-color: cadetblue;
+  width: 100%;
+  height: 500px;
 }
 
-  .bookGrid {
-      background-color: cadetblue;
-      width: 100%;
-      height: 500px;
+  .bookGrid {      
       display: grid;
   }
 
