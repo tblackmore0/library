@@ -122,8 +122,48 @@ function createBookCard(book) {
     for (let i = 0 ; i < buttonListener.length; i++) {
         buttonListener[i].addEventListener('click' , resetLibrary, false) ; 
      }
+
+     let buttonListenerRead = document.getElementsByClassName("readButton");
+    for (let i = 0 ; i < buttonListenerRead.length; i++) {
+        buttonListenerRead[i].addEventListener('click' , changeRead, false) ; 
+     }
+
+
+
   }
 // Create book div end
+
+function changeRead () {
+
+  let id = this.parentNode.dataset.identity
+
+    let index = myLibrary.findIndex(checkArray);
+
+    function checkArray(element) {
+        for (i=0; i < myLibrary.length; i++) {
+            if (element.identity == id) {
+                return id;
+            }
+        }}
+
+    myLibrary.forEach(function(element) {
+      if (element.identity == id) {  
+        if (element.read == "yes") {
+          element.read = "no";
+        } else if (element.read =="no") {
+          element.read = "yes";
+        }
+    
+    }
+
+    const myNode = document.getElementById("bookGrid");
+    while (myNode.firstChild) {
+      myNode.removeChild(myNode.lastChild);
+    }
+
+    myLibrary.forEach(book => createBookCard(book)); 
+
+})}
 
 
 
