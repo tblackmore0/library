@@ -1,7 +1,27 @@
-let myLibrary = [];
+let myLibrary = {};
 
 
- // Modal open/close
+// local storage
+
+
+function updateLocal () {
+  myLibrary = localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  myLibrary = JSON.parse(localStorage.getItem("myLibrary") || "[]");
+}
+
+
+
+window.onload = function () {
+
+myLibrary = JSON.parse(localStorage.getItem("myLibrary") || "[]");
+myLibrary.forEach(book => createBookCard(book)); 
+
+}
+
+// Local storage end
+
+
+// Modal open/close
 
 document.addEventListener("DOMContentLoaded", function() {
     let modalWrapper = document.getElementById("modal_wrapper");
@@ -69,6 +89,7 @@ class Book {
 
     	myLibrary.push(book);
         createBookCard(book);
+        updateLocal();
 
       
     }
@@ -163,6 +184,8 @@ function changeRead () {
 
     myLibrary.forEach(book => createBookCard(book)); 
 
+    updateLocal();
+
 })}
 
 
@@ -191,6 +214,8 @@ function resetLibrary () {
     myLibrary.splice(index, 1);
     console.log(myLibrary);
    myLibrary.forEach(book => createBookCard(book)); 
+
+   updateLocal();
 
     }
 
