@@ -222,3 +222,5 @@ function resetLibrary () {
 
 const bookSpace = document.querySelector('.bookSpace');
 
+
+// Firebase 
